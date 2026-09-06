@@ -1,46 +1,83 @@
 'use client';
-import React, { createContext, useContext, useState } from 'react';
-import { subDays, parseISO, isWithinInterval } from 'date-fns';
+
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { subDays, parseISO, isAfter } from 'date-fns';
+import { ProjectItem } from '@/data/mockData';
+
+type PresetRange = '30D' | '90D' | '180D' | '1Y' | '2Y';
 
 interface FilterContextType {
-  startDate: Date;
-  endDate: Date;
-  presetRange: string;
-  setPresetRange: (preset: '30' | '90' | '180' | '365' | '730') => void;
-  filterByDate: <T extends { first_seen?: string }>(items: T[]) => T[];
+  presetRange: PresetRange;
+  setPresetRange: (range: PresetRange) => void;
+  savedProjectIds: string[];
+  toggleSaveProject: (id: string) => void;
+  filterByDate: (projects: ProjectItem[]) => ProjectItem[];
 }
 
-const FilterContext = createContext<FilterContextType | null>(null);
+const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
 export function FilterProvider({ children }: { children: React.ReactNode }) {
-  const [presetRange, setPreset] = useState<'30' | '90' | '180' | '365' | '730'>('90');
-  const [endDate, setEndDate] = useState<Date>(new Date('2026-09-06T12:00:00Z'));
-  const [startDate, setStartDate] = useState<Date>(subDays(new Date('2026-09-06T12:00:00Z'), 90));
+  const [presetRange, setPresetRange] = useState<PresetRange>('1Y');
+  const [savedProjectIds, setSavedProjectIds] = useState<string[]>([]);
 
-  const setPresetRange = (preset: '30' | '90' | '180' | '365' | '730') => {
-    setPreset(preset);
-    const end = new Date('2026-09-06T12:00:00Z');
-    setStartDate(subDays(end, parseInt(preset)));
-    setEndDate(end);
+  // Load saved projects from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem('clutch_saved_projects');
+    if (stored) {
+      try {
+        setSavedProjectIds(JSON.parse(stored));
+      } catch (e) {
+        console.error('Failed to parse saved projects', e);
+      }
+    }
+  }, []);
+
+  const toggleSaveProject = (id: string) => {
+    setSavedProjectIds((prev) => {
+      const next = prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id];
+      localStorage.setItem('clutch_saved_projects', JSON.stringify(next));
+      return next;
+    });
   };
 
-  const filterByDate = <T extends { first_seen?: string }>(items: T[]) => {
-    return items.filter((item) => {
-      if (!item.first_seen) return true;
-      const targetDate = parseISO(item.first_seen);
-      return isWithinInterval(targetDate, { start: startDate, end: endDate });
+  const filterByDate = (projects: ProjectItem[]) => {
+    const daysMap: Record<PresetRange, number> = {
+      '30D': 30,
+      '90D': 90,
+      '180D': 180,
+      '1Y': 365,
+      '2Y': 730,
+    };
+
+    const cutoff = subDays(new Date(), daysMap[presetRange]);
+    return projects.filter((p) => {
+      try {
+        return isAfter(parseISO(p.filingDate), cutoff);
+      } catch {
+        return true;
+      }
     });
   };
 
   return (
-    <FilterContext.Provider value={{ startDate, endDate, presetRange, setPresetRange, filterByDate }}>
+    <FilterContext.Provider
+      value={{
+        presetRange,
+        setPresetRange,
+        savedProjectIds,
+        toggleSaveProject,
+        filterByDate,
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );
 }
 
-export const useGlobalFilter = () => {
-  const ctx = useContext(FilterContext);
-  if (!ctx) throw new Error('useGlobalFilter must be inside FilterProvider');
-  return ctx;
-};
+export function useGlobalFilter() {
+  const context = useContext(FilterContext);
+  if (!context) {
+    throw new Error('useGlobalFilter must be used within FilterProvider');
+  }
+  return context;
+}
