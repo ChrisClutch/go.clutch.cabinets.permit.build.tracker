@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import './globals.css';
 
-export const metadata: Metadata = {
-  title: "Clutch Cabinets Oregon Project Radar",
-  description: "Oregon Multifamily & Casework Sales Intelligence",
+export const metadata = {
+  title: 'Clutch Cabinets - Oregon Radar',
+  description: 'Multifamily Construction & Permit Lead Tracker',
 };
 
 export default function RootLayout({
@@ -13,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
