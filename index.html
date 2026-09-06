@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clutch Cabinets Oregon Project Radar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 flex h-screen overflow-hidden font-sans">
+  <aside class="w-64 bg-slate-900 border-r border-slate-800 p-5 flex flex-col justify-between">
+    <div class="space-y-6">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm">CC</div>
+        <div>
+          <div class="font-bold text-xs tracking-tight text-white uppercase">Clutch Cabinets</div>
+          <div class="text-[10px] text-amber-400 font-semibold tracking-wider">OREGON RADAR</div>
+        </div>
+      </div>
+      <nav class="space-y-1 text-xs font-semibold text-slate-400">
+        <div class="px-3 py-2 rounded bg-amber-500 text-slate-950 font-bold flex items-center gap-2 cursor-pointer">
+          <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
+        </div>
+      </nav>
+    </div>
+    <div class="text-[11px] text-slate-500 border-t border-slate-800 pt-3">
+      Active: <span class="text-slate-300 font-medium">Chris Anderson (Admin)</span>
+    </div>
+  </aside>
+
+  <main class="flex-1 overflow-y-auto p-8 bg-slate-900/50">
+    <div class="space-y-6 max-w-7xl mx-auto">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-xl font-black uppercase text-white">Oregon Multifamily Pipeline Radar</h1>
+          <p class="text-xs text-slate-400 mt-0.5">Tracking Willamette Valley, Portland Metro, and Central Oregon cabinet bid packages</p>
+        </div>
+        <span class="px-3 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold">
+          Simulated Feed Active
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+          <div class="text-[11px] text-slate-400 font-bold uppercase">Active Projects</div>
+          <div class="text-2xl font-black text-amber-400 mt-1">5</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Willamette & Metro Pipeline</div>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+          <div class="text-[11px] text-slate-400 font-bold uppercase">Total Doors / Keys</div>
+          <div class="text-2xl font-black text-white mt-1">440</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Volume Casework Potential</div>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+          <div class="text-[11px] text-slate-400 font-bold uppercase">High Score Leads (≥4)</div>
+          <div class="text-2xl font-black text-emerald-400 mt-1">5</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Target Bidding Window</div>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
+          <div class="text-[11px] text-slate-400 font-bold uppercase">Repeat Pattern GCs</div>
+          <div class="text-2xl font-black text-blue-400 mt-1">3</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Sharpcor, Duncan, Walsh</div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 rounded-lg border border-slate-800 overflow-hidden">
+        <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+          <h2 class="text-xs font-bold text-slate-200 uppercase tracking-wider">Oregon Active Permit Leads</h2>
+          <span class="text-[11px] text-slate-500 font-mono">5 Records</span>
+        </div>
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-800/60 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+            <tr>
+              <th class="p-3">Project / Location</th>
+              <th class="p-3">Asset Class</th>
+              <th class="p-3">Units</th>
+              <th class="p-3">Valuation</th>
+              <th class="p-3">General Contractor</th>
+              <th class="p-3">Stage</th>
+              <th class="p-3">Score</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr class="hover:bg-slate-800/40">
+              <td class="p-3"><strong class="text-white">Pringle Creek Commons</strong><br><span class="text-slate-500 text-[11px]">1480 21st St SE, Salem</span></td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">Apartment</span></td>
+              <td class="p-3 font-semibold">84</td>
+              <td class="p-3 font-mono text-emerald-400">$14.8M</td>
+              <td class="p-3 font-bold text-amber-400">Sharpcor Construction</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 font-bold text-[10px] uppercase">Plan Review</span></td>
+              <td class="p-3"><span class="inline-flex w-5 h-5 items-center justify-center rounded-full bg-amber-500 text-slate-950 font-black">5</span></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="p-3"><strong class="text-white">Turner Road Garden Flats</strong><br><span class="text-slate-500 text-[11px]">2985 Turner Rd SE, Salem</span></td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">Apartment</span></td>
+              <td class="p-3 font-semibold">124</td>
+              <td class="p-3 font-mono text-emerald-400">$22.5M</td>
+              <td class="p-3 font-bold text-amber-400">Sharpcor Construction</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800 font-bold text-[10px] uppercase">Intake</span></td>
+              <td class="p-3"><span class="inline-flex w-5 h-5 items-center justify-center rounded-full bg-amber-500 text-slate-950 font-black">5</span></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="p-3"><strong class="text-white">Liberty Mixed Residences</strong><br><span class="text-slate-500 text-[11px]">445 Liberty St SE, Salem</span></td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">Mixed-Use</span></td>
+              <td class="p-3 font-semibold">68</td>
+              <td class="p-3 font-mono text-emerald-400">$18.2M</td>
+              <td class="p-3 font-bold text-amber-400">Rich Duncan Construction</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-bold text-[10px] uppercase">Under Construction</span></td>
+              <td class="p-3"><span class="inline-flex w-5 h-5 items-center justify-center rounded-full bg-amber-500 text-slate-950 font-black">4</span></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="p-3"><strong class="text-white">Wallace River Lofts</strong><br><span class="text-slate-500 text-[11px]">1120 Wallace Rd NW, West Salem</span></td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">Apartment</span></td>
+              <td class="p-3 font-semibold">54</td>
+              <td class="p-3 font-mono text-emerald-400">$11.4M</td>
+              <td class="p-3 font-bold text-amber-400">Rich Duncan Construction</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold text-[10px] uppercase">Issued</span></td>
+              <td class="p-3"><span class="inline-flex w-5 h-5 items-center justify-center rounded-full bg-amber-500 text-slate-950 font-black">4</span></td>
+            </tr>
+            <tr class="hover:bg-slate-800/40">
+              <td class="p-3"><strong class="text-white">Columbia View Apartments</strong><br><span class="text-slate-500 text-[11px]">8820 NE Prescott, Portland</span></td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">Affordable / LIHTC</span></td>
+              <td class="p-3 font-semibold">110</td>
+              <td class="p-3 font-mono text-emerald-400">$34.0M</td>
+              <td class="p-3 font-bold text-amber-400">Walsh Construction Co.</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-bold text-[10px] uppercase">Under Construction</span></td>
+              <td class="p-3"><span class="inline-flex w-5 h-5 items-center justify-center rounded-full bg-amber-500 text-slate-950 font-black">5</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
