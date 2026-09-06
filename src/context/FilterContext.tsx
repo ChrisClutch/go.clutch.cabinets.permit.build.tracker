@@ -20,7 +20,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
   const [presetRange, setPresetRange] = useState<PresetRange>('1Y');
   const [savedProjectIds, setSavedProjectIds] = useState<string[]>([]);
 
-  // Load saved projects from localStorage
+  // Load saved projects from browser memory
   useEffect(() => {
     const stored = localStorage.getItem('clutch_saved_projects');
     if (stored) {
@@ -32,6 +32,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Star / unstar a project lead
   const toggleSaveProject = (id: string) => {
     setSavedProjectIds((prev) => {
       const next = prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id];
